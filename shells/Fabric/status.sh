@@ -1,0 +1,1 @@
+(docker ps -aq --filter label=service=hyperledger-fabric --filter "status=running"; docker ps -aq --filter name='dev-peer*' --filter "status=running"; docker ps -aq --filter name=ccaas --filter "status=running" | sort | uniq) | wc -l
