@@ -1,0 +1,1 @@
+java -jar did-orchestrator-server-1.0.0.jar --spring.config.location=configs/application.yml
