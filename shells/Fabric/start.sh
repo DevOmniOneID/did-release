@@ -4,7 +4,7 @@ eval $command
 if [ $? -eq 0 ]; then
 echo "installation checked"
 else
-./install-fabric.sh d s b
+./install-fabric.sh
 sleep 5
 fi
 
