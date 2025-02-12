@@ -6,7 +6,8 @@ eval $command
 if [ $? -eq 0 ]; then
 echo "installation checked"
 else
-${PWD}/install-fabric.sh
+${PWD}/install-fabric.sh --fabric-version 2.5.11 binary
+${PWD}/install-fabric.sh --fabric-version 2.5.1 docker
 sleep 5
 fi
 
