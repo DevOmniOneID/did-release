@@ -6,6 +6,8 @@ eval $command
 if [ $? -eq 0 ]; then
 echo "installation checked"
 else
+tar -xvf did-fabric-contract-1.0.0.tar.gz
+tar -xvf fabric-samples-1.4.4.tar.gz
 ${PWD}/install-fabric.sh --fabric-version 2.5.11 binary
 ${PWD}/install-fabric.sh --fabric-version 2.5.1 docker
 sleep 5
