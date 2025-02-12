@@ -19,9 +19,17 @@ ${PWD}/fabric-samples/test-network/network.sh up
 sleep 5
 ${PWD}/fabric-samples/test-network/network.sh up -ca -s couchdb
 sleep 5
+
+command="sh ${PWD}/status.sh"
+eval $command
+
+if [ $? -eq 0 ]; then
+echo "starting checked"
+else
 ${PWD}/fabric-samples/test-network/network.sh createChannel -c mychannel
 sleep 5
 ${PWD}/fabric-samples/test-network/network.sh deployCC -c mychannel -ccn opendid -ccp ${PWD}/did-fabric-contract/source/did-fabric-contract -ccl go -ccs 1
+fi
 
 cp ${PWD}/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/* ${PWD}/cert/sk
 cp ${PWD}/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/* ${PWD}/cert/cert.pem
