@@ -26,7 +26,10 @@ server:
   port: 9001
 
 services:
+  cliToolPath: "/tool"
   jarPath: "/jars"
+  walletPath: "/wallet"
+  didDocPath: "/DIDDoc"
   server:
     tas:
       name: "TAS"
