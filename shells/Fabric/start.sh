@@ -13,7 +13,6 @@ else
         ${PWD}/fabric-samples/test-network/network.sh down
 fi
 
-${PWD}/fabric-samples/test-network/network.sh up
 ${PWD}/fabric-samples/test-network/network.sh up -ca -s couchdb
 sleep 3
 
