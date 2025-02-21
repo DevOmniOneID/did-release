@@ -1,6 +1,11 @@
 GITHUB_REPO="DevOmniOneID/did-orchestrator-server"
 TAG="V1.0.0"
 
+OCHESTRATOR_JAR_FILE="did-orchestrator-server-1.0.0.jar"
+CONFIG_PATH="configs/application.yml"
+LOG_FILE="orchestrator.log"
+PID_FILE="orchestrator.pid"
+
 JAR_NAMES=("did-api-server-1.0.0.jar" "did-demo-server-1.0.0.jar" "did-issuer-server-1.0.0.jar")
 JAR_PATHS=("jars/API" "jars/Demo" "jars/Issuer")
 
@@ -54,6 +59,11 @@ fi
 echo "All JAR files are ready."
 
 echo "Running orchestrator..."
-java -jar "did-orchestrator-server-1.0.0.jar" --spring.config.location=configs/application.yml &
+
+chmod +x "$OCHESTRATOR_JAR_FILE"
+
+nohup java -jar "$OCHESTRATOR_JAR_FILE" --spring.config.location="$CONFIG_PATH" > "$LOG_FILE" 2>&1 &
+
+echo $! > "$PID_FILE"
 
 echo "Server started successfully!"
