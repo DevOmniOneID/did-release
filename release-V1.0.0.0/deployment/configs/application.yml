@@ -4,13 +4,12 @@ spring:
   profiles:
     default: dev
     group:
-        dev:
-          - logging
-          - spring-docs
-          - demo
+      dev:
+      - logging
+      - spring-docs
+      - demo
   jackson:
     default-property-inclusion: non_null
-
 management:
   endpoints:
     web:
@@ -21,25 +20,21 @@ management:
       enabled: true
     startup:
       enabled: true
-
 server:
   port: 9001
-
 blockchain:
   channel: mychannel
   chaincodeName: opendid
-
 database:
   port: 5430
   user: omn
   password: omn
   db: omn
-
 services:
-  cliToolPath: "/tool"
-  jarPath: "/jars"
-  walletPath: "/wallet"
-  didDocPath: "/DIDDoc"
+  cliToolPath: /tool
+  jarPath: /jars
+  walletPath: /wallet
+  didDocPath: /DIDDoc
   server:
     tas:
       name: TAS
