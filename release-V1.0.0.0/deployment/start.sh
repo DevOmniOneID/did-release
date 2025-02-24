@@ -3,7 +3,8 @@ TAG="V1.0.0"
 
 OCHESTRATOR_JAR_FILE="did-orchestrator-server-1.0.0.jar"
 CONFIG_PATH="configs/application.yml"
-LOG_FILE="orchestrator.log"
+LOG_DIR="logs"
+LOG_FILE="$LOG_DIR/orchestrator.log"
 PID_FILE="orchestrator.pid"
 
 JAR_NAMES=("did-api-server-1.0.0.jar" "did-demo-server-1.0.0.jar" "did-issuer-server-1.0.0.jar")
@@ -59,6 +60,10 @@ fi
 echo "All JAR files are ready."
 
 echo "Running orchestrator..."
+
+if [ ! -d "$LOG_DIR" ]; then
+  mkdir -p "$LOG_DIR"
+fi
 
 chmod +x "$OCHESTRATOR_JAR_FILE"
 

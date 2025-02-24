@@ -35,6 +35,7 @@ services:
   jarPath: /jars
   walletPath: /wallet
   didDocPath: /DIDDoc
+  logPath: /logs
   server:
     tas:
       name: TAS
