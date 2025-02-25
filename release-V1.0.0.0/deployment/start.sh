@@ -7,8 +7,8 @@ LOG_DIR="logs"
 LOG_FILE="$LOG_DIR/orchestrator.log"
 PID_FILE="orchestrator.pid"
 
-JAR_NAMES=("did-api-server-1.0.0.jar" "did-demo-server-1.0.0.jar" "did-issuer-server-1.0.0.jar")
-JAR_PATHS=("jars/API" "jars/Demo" "jars/Issuer")
+JAR_NAMES=("did-api-server-1.0.0.jar" "did-demo-server-1.0.0.jar" "did-issuer-server-1.0.0.jar" "did-ta-server-1.0.0.jar" "did-ca-server-1.0.0.jar" "did-verifier-server-1.0.0.jar" "did-wallet-server-1.0.0.jar")
+JAR_PATHS=("jars/API" "jars/Demo" "jars/Issuer" "jars/TAS" "jars/CAS" "jars/Verifier" "jars/WalletService")
 
 fail_flag=0
 
