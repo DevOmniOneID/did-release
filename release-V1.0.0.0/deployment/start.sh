@@ -71,4 +71,9 @@ nohup java -jar "$OCHESTRATOR_JAR_FILE" --spring.config.location="$CONFIG_PATH" 
 
 echo $! > "$PID_FILE"
 
+sleep 1
+
+tail -f "$LOG_FILE"
+
+
 echo "Server started successfully!"
