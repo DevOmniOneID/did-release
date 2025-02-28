@@ -53,7 +53,6 @@ JAR_PATHS=(
 )
 
 BLOCKCHAIN_PATH="${PWD}/blockchain.properties"
-SETUP_PATH="${PWD}/jars/"
 
 for JAR_PATH in "${JAR_PATHS[@]}"; do
     APP_YML="${JAR_PATH}/application.yml"
@@ -87,15 +86,6 @@ for JAR_PATH in "${JAR_PATHS[@]}"; do
         in_setup && /base-url:/ { found=1; sub(/base-url:.*/, "base-url: http://localhost") }
         { print }
         END { if (!found) print "setup:\n  base-url: http://localhost" }
-        ' "$APP_YML" > temp.yml && mv temp.yml "$APP_YML"
-
-        # setup.path: ${PWD}/jars/
-        awk -v setuppath="$SETUP_PATH" '
-        BEGIN { found=0 }
-        /^setup:/ { in_setup=1 }
-        in_setup && /path:/ { found=1; sub(/path:.*/, "path: " setuppath) }
-        { print }
-        END { if (!found) print "setup:\n  path: " setuppath }
         ' "$APP_YML" > temp.yml && mv temp.yml "$APP_YML"
 
     else
