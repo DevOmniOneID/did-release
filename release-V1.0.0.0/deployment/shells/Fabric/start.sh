@@ -53,6 +53,7 @@ JAR_PATHS=(
 )
 
 BLOCKCHAIN_PATH="${PWD}/blockchain.properties"
+SETUP_PATH="${PWD}/../../jars/"
 
 for JAR_PATH in "${JAR_PATHS[@]}"; do
     APP_YML="${JAR_PATH}/application.yml"
@@ -79,16 +80,21 @@ for JAR_PATH in "${JAR_PATHS[@]}"; do
         END { if (!found) print "blockchain:\n  file-path: " bcpath }
         ' "$APP_YML" > temp.yml && mv temp.yml "$APP_YML"
 
-	# setup.base-url: http://localhost
-        awk '
-        BEGIN { found=0 }
+        # setup.base-url: http://localhost and setup.path: ${SETUP_PATH}
+        awk -v setup_base_url="http://localhost" -v setup_path="$SETUP_PATH" '
+        BEGIN { found_base_url=0; found_path=0 }
         /^setup:/ { in_setup=1 }
-        in_setup && /base-url:/ { found=1; sub(/base-url:.*/, "base-url: http://localhost") }
+        in_setup && /base-url:/ { found_base_url=1; sub(/base-url:.*/, "base-url: " setup_base_url) }
+        in_setup && /path:/ { found_path=1; sub(/path:.*/, "path: " setup_path) }
         { print }
-        END { if (!found) print "setup:\n  base-url: http://localhost" }
+        END {
+            if (!found_base_url) print "setup:\n  base-url: " setup_base_url
+            if (!found_path) print "  path: " setup_path
+        }
         ' "$APP_YML" > temp.yml && mv temp.yml "$APP_YML"
 
     else
         echo "Skipping: $APP_YML (File not found)"
     fi
 done
+
