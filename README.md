@@ -34,3 +34,11 @@ graph TD
     Issuer -->|Issues VC| User
     User --> Credential
 ```
+
+```mermaid
+sequenceDiagram
+    participant TAS
+    participant Wallet
+    TAS->>Wallet: Hello
+    Wallet-->>TAS: Hi!
+```
