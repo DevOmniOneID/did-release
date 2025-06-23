@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[TAS (Trust Anchor Service)]
     B1[Issuer]
@@ -37,3 +38,4 @@ graph TD
     B1 --> |Issue VC| B5
     B5 --> D2
     D2 --> C
+```
