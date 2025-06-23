@@ -42,3 +42,13 @@ sequenceDiagram
     TAS->>Wallet: Hello
     Wallet-->>TAS: Hi!
 ```
+
+```mermaid
+classDiagram
+    class Wallet
+    class KeyManager
+    class DIDDocument
+
+    Wallet *-- KeyManager : manages
+    Wallet o-- DIDDocument : includes
+```
